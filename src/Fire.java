@@ -23,6 +23,43 @@ public class Fire {
         urlScanner.close();
         return contents;
     }
+    /**
+    counts words on a specific url.
+    @param words array of words to be counted through
+    @return the integer number of instances of "Prince", "prince" or anything with prince in it
+     */
+    public static int wordcount(String[] words){
+        int count = 0;
+        for (String word : words){
+            if (word.toLowerCase().contains("prince")){
+                count+=1;
+            }
+        }
+        return count;
+    }
+    /**
+    doin a whole lot o hecko and counting unique words i guess.
+    @param words array of words to be analyzed
+    @return integer count of number of unique words
+     */
+    public static int wordcount2(String[] words){
+        int count=0;
+        String[] uniquewords= new String[words.length];
+        for (String word :words){
+            String betterword=word.replace(",","").replace(".","").replace(";","").replace("!","").replace("?","").replace(":","").replace("[","").replace("]","");
+            boolean unique = true;
+            for (String uniques :uniquewords){
+                if (betterword.equals(uniques)){
+                    unique=false;
+                }
+            }
+            if (unique==true){
+                uniquewords[count]=betterword;
+                count+=1;
+            }
+        }
+        return count;
+    }
     public static void main(String[] unused){
         String[] hamletword=urlToString("http://erdani.com/tdpl/hamlet.txt").replace("\n"," ").split(" ");
         String[] dataword=urlToString("https://www.bls.gov/tus/charts/chart9.txt").replace("\n"," ").replace("\t"," ").split(" ");
@@ -33,8 +70,10 @@ public class Fire {
               //  datacount+=1;
             //}
       //  }
-        System.out.println(urlToString("https://www.bls.gov/tus/charts/chart9.txt"));
+       // System.out.println(urlToString("https://www.bls.gov/tus/charts/chart9.txt"));
         System.out.println(hamletword.length);
+        System.out.println(wordcount(hamletword));
+        System.out.println(wordcount2(hamletword));
        // System.out.println(datacount);
     }
 }
