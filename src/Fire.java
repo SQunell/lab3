@@ -62,15 +62,6 @@ public class Fire {
     }
     public static void main(String[] unused){
         String[] hamletword=urlToString("http://erdani.com/tdpl/hamlet.txt").split("\\s+");
-        //String[] dataword=urlToString("https://www.bls.gov/tus/charts/chart9.txt").replace("\n"," ").replace("\t"," ").split(" ");
-        //int datacount=0;
-        //for (String i : dataword) {
-          //  if (!i.equals("") && !i.equals(" ")&& !i.equals("\n") && i!=null) {
-            //    System.out.println(i);
-              //  datacount+=1;
-            //}
-      //  }
-       // System.out.println(urlToString("https://www.bls.gov/tus/charts/chart9.txt"));
         System.out.println(hamletword.length);
         System.out.println(wordcount(hamletword));
         System.out.println(wordcount2(hamletword));
