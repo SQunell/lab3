@@ -46,7 +46,7 @@ public class Fire {
         int count=0;
         String[] uniquewords= new String[words.length];
         for (String word :words){
-            String betterword=word.replace(",","").replace(".","").replace(";","").replace("!","").replace("?","").replace(":","").replace("[","").replace("]","").replace("(","").replace(")","");
+            String betterword = word.replaceAll("[^a-zA-Z ]", "").toLowerCase();
             boolean unique = true;
             for (String uniques :uniquewords){
                 if (betterword.equals(uniques)){
@@ -61,8 +61,8 @@ public class Fire {
         return count;
     }
     public static void main(String[] unused){
-        String[] hamletword=urlToString("http://erdani.com/tdpl/hamlet.txt").replace("\n"," ").replace("\t","").split(" ");
-        String[] dataword=urlToString("https://www.bls.gov/tus/charts/chart9.txt").replace("\n"," ").replace("\t"," ").split(" ");
+        String[] hamletword=urlToString("http://erdani.com/tdpl/hamlet.txt").split("\\s+");
+        //String[] dataword=urlToString("https://www.bls.gov/tus/charts/chart9.txt").replace("\n"," ").replace("\t"," ").split(" ");
         //int datacount=0;
         //for (String i : dataword) {
           //  if (!i.equals("") && !i.equals(" ")&& !i.equals("\n") && i!=null) {
